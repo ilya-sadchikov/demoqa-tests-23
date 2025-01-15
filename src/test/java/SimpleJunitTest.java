@@ -1,4 +1,8 @@
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -6,31 +10,51 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class SimpleJunitTest {
 
+    int result;
+
+    @AfterAll
+
+
+    @BeforeAll
+    static void beforeAll(){
+        System.out.println("###  beforeALL");
+    }
+
+    @BeforeEach
+    void beforeEach(){
+        System.out.println("###  beforeeach");
+    }
+
+    @AfterEach
+    void afterEach(){
+        System.out.println("###  aftereach\n");
+    }
+
     @Test
     void firstTest() {
-        System.out.println("###   firstTest");
-        Assertions.assertTrue(3 > 2);
+        int result = getResult();
+        System.out.println("###     firstTest");
+        Assertions.assertTrue(result > 2);
     }
 
     @Test
     void secondTest() {
-        System.out.println("###   secondTest");
-        Assertions.assertTrue(3 > 2);
+        int result = getResult();
+        System.out.println("###     secondTest");
+        Assertions.assertTrue(result > 2);
     }
 
     @Test
     void thirdTest() {
-        System.out.println("###   thirdTest");
-        Assertions.assertTrue(3 > 2);
+        int result = getResult();
+        System.out.println("###     thirdTest");
+        Assertions.assertTrue(result > 2);
     }
 
+    public int getResult() {
 
-    /*
-    @Test
-    void successfulSearchTest() {
-        open("https://www.google.com/");
-        $("[name=q]").setValue("selenide").pressEnter();
-        $("[id=search]").shouldHave(text("https://selenide.org"));
-     */
+       return result = 3;
+    }
+
 
 }
